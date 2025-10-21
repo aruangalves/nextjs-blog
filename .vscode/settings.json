@@ -7,9 +7,17 @@
   "editor.glyphMargin": false,
   "workbench.activityBar.location": "top",
   "editor.lineNumbers": "on",
-  "files.eol": "\n", // Final de linha sempre será LF
+  "files.eol": "\n", // End of line always as LF
 
-  // 🛠 Formatação e Lint
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.runInTerminal": true,
+  "code-runner.ignoreSelection": true,
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "typescript": "npx tsx"
+  },
+
+  // Lint and formatting
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
 
