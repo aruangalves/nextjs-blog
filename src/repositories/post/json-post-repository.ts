@@ -24,8 +24,18 @@ export class JsonPostRepository implements PostRepository {
     const posts = await this.readFromDisk();
     return posts;
   }
+
+  async findById(id: string): Promise<PostModel> {
+    const posts = await this.findAll();
+    const post = posts.find((post) => post.id === id);
+
+    if (!post) throw new Error('Post not found');
+
+    return post;
+  }
 }
-export const postRepository = new JsonPostRepository();
+//By setting the type as "PostRepository" it hides functions and other implementation details that do not belong to this Interface type
+export const postRepository: PostRepository = new JsonPostRepository();
 
 //Printing the content from the JSON file:
 //Method #1
@@ -36,9 +46,18 @@ export const postRepository = new JsonPostRepository();
 //   console.log(posts);
 // })();
 
-(async () => {
-  const posts = await postRepository.findAll();
-  posts.forEach((post) => {
-    console.log(post.id);
-  });
-})();
+//Print every post ID
+// (async () => {
+//   const posts = await postRepository.findAll();
+//   posts.forEach((post) => {
+//     console.log(post.id);
+//   });
+// })();
+
+//Find post with id 'afa086e4-53e4-492d-acf2-7c2966d83fcd':
+// (async () => {
+//   const post = await postRepository.findById(
+//     'afa086e4-53e4-492d-acf2-7c2966d83fcd',
+//   );
+//   console.log(post);
+// })();
