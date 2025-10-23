@@ -34,8 +34,6 @@ export class JsonPostRepository implements PostRepository {
     return post;
   }
 }
-//By setting the type as "PostRepository" it hides functions and other implementation details that do not belong to this Interface type
-export const postRepository: PostRepository = new JsonPostRepository();
 
 //Printing the content from the JSON file:
 //Method #1
