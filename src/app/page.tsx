@@ -1,7 +1,6 @@
-import { Header } from '@/components/Header';
+import { PostList } from '@/components/PostList';
 import { SpinLoader } from '@/components/SpinLoader';
-import { postRepository } from '@/repositories/post';
-import Image from 'next/image';
+import { Suspense } from 'react';
 
 //this page represents the main route of the application
 //every route is represented by its folder name and accessed from the page.tsx file within
@@ -9,9 +8,8 @@ import Image from 'next/image';
 // app/page.tsx --> / root route
 // app/about/page.tsx --> /about route
 
-export default async function Home() {
+export default function Home() {
   console.log('Message from the Home server component');
-  const posts = await postRepository.findAll();
 
   return (
     <div className='font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20'>
@@ -20,9 +18,9 @@ export default async function Home() {
       </header>
 
       <main className='flex flex-col gap-[32px] row-start-2 items-center sm:items-start'>
-        {posts.map((post) => {
-          return <p key={post.id}>{post.title}</p>;
-        })}
+        <Suspense fallback={<SpinLoader />}>
+          <PostList />
+        </Suspense>
       </main>
 
       <footer className='row-start-3 flex gap-[24px] flex-wrap items-center justify-center'>
