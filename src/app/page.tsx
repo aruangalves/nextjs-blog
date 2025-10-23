@@ -12,7 +12,7 @@ export default function Home() {
   console.log('Message from the Home server component');
 
   return (
-    <div className='font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20'>
+    <div className='text-slate-900 bg-slate-100 min-h-screen dark:text-slate-100 dark:bg-slate-900'>
       <header>
         <h1 className='text-6x1 font-bold text-center py-8'>Your page title</h1>
       </header>
