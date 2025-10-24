@@ -14,16 +14,22 @@ export function PostHeading({
   const headingCLassesMap = {
     h1: 'text-3xl/tight sm:text-6xl',
     h2: 'text-2xl/tight sm:text-4xl',
-    h3: 'text-2xl/tight sm:text-4xl',
-    h4: 'text-2xl/tight sm:text-4xl',
-    h5: 'text-2xl/tight sm:text-4xl',
-    h6: 'text-2xl/tight sm:text-4xl',
+    h3: 'text-2xl/tight sm:text-2xl',
+    h4: 'text-2xl/tight sm:text-2xl',
+    h5: 'text-2xl/tight sm:text-2xl',
+    h6: 'text-2xl/tight sm:text-2xl',
   };
 
   const commonClasses = ' mb-4 font-extrabold';
 
   return (
-    <HeadingTag className={headingCLassesMap[HeadingTag] + commonClasses}>
+    <HeadingTag
+      className={
+        headingCLassesMap[HeadingTag] +
+        commonClasses +
+        ` hover:text-slate-600 transition`
+      }
+    >
       <Link href={href}>{children}</Link>
     </HeadingTag>
   );
