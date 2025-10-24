@@ -1,5 +1,6 @@
 import { PostHeading } from '../PostHeading';
 import { PostCoverImage } from '../PostCoverImage';
+import { formatDate, formatRelativeDate } from '@/utils/format-date';
 
 export function FeaturedPost() {
   return (
@@ -18,10 +19,11 @@ export function FeaturedPost() {
       />
       <section className='sm:justify-center'>
         <time
-          dateTime='2025-04-20'
+          dateTime='2025-04-08T00:24:38.616Z'
           className='text-slate-600 text-sm/tight block mb-0.5'
+          title={formatDate('2025-04-08T00:24:38.616Z')}
         >
-          20/04/2025 10:00
+          {formatRelativeDate('2025-10-24T18:24:38.616Z')}
         </time>
         <PostHeading href='https://google.com'>
           A rather remarkable article title
