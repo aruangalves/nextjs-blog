@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { PostHeading } from '../PostHeading';
 
 export function FeaturedPost() {
   return (
@@ -21,9 +22,9 @@ export function FeaturedPost() {
         >
           20/04/2025 10:00
         </time>
-        <h1 className='text-2xl/tight mb-4 font-extrabold sm:text-4xl'>
-          <Link href='#'>A rather remarkable article title</Link>
-        </h1>
+        <PostHeading href='https://google.com'>
+          A rather remarkable article title
+        </PostHeading>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis
           necessitatibus pariatur blanditiis fugit quae labore commodi
