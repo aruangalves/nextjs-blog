@@ -8,6 +8,7 @@
   "workbench.activityBar.location": "top",
   "editor.lineNumbers": "on",
   "files.eol": "\n", // End of line always as LF
+  "workbench.editor.enablePreview": false,
 
   "code-runner.clearPreviousOutput": true,
   "code-runner.runInTerminal": true,

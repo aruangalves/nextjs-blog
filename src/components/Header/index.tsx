@@ -1,13 +1,9 @@
-'use client';
-
 export function Header() {
-  console.log('Message from the Header client component');
   return (
-    <h1
-      className='text-6xl font-bold text-blue-500 hover:text-blue-50 hover:bg-blue-500 transition duration-1000'
-      onClick={() => alert(123)}
-    >
-      Some header text
-    </h1>
+    <header>
+      <h1 className='font-extrabold text-4xl/normal py-8 sm:text-5xl/normal sm:py-10 md:text-6xl md:py-11 lg:text-7xl lg:py-12'>
+        <a href='#'>The Blog</a>
+      </h1>
+    </header>
   );
 }
