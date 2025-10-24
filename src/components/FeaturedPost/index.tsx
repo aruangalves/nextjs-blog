@@ -1,20 +1,21 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { PostHeading } from '../PostHeading';
+import { PostCoverImage } from '../PostCoverImage';
 
 export function FeaturedPost() {
   return (
     <article className='grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group'>
-      <Link className='w-full h-full overflow-hidden rounded-xl' href='#'>
-        <Image
-          src='/images/bryen_0.png'
-          width={1200}
-          height={720}
-          alt='Título do post'
-          className='group-hover:scale-105 transition w-full h-full object-cover object-center'
-          priority
-        ></Image>
-      </Link>
+      <PostCoverImage
+        linkProps={{
+          href: '#',
+        }}
+        imageProps={{
+          width: 1200,
+          height: 720,
+          src: '/images/bryen_5.png',
+          alt: 'Título do post',
+          priority: true,
+        }}
+      />
       <section className='sm:justify-center'>
         <time
           dateTime='2025-04-20'
