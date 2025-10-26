@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { Container } from '@/components/Container';
+import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: {
@@ -26,9 +27,7 @@ export default function RootLayout({
         <Container>
           <Header />
           {children}
-          <footer className='row-start-3 flex gap-[24px] flex-wrap items-center justify-center'>
-            <p>Here is your footer</p>
-          </footer>
+          <Footer />
         </Container>
       </body>
     </html>
