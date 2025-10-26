@@ -1,8 +1,13 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Header } from '@/components/Header';
+import { Container } from '@/components/Container';
 
 export const metadata: Metadata = {
-  title: 'The Blog - This is a blog built with Next.js',
+  title: {
+    default: 'The Blog - This is a blog built with Next.js',
+    template: '%s | The Blog',
+  },
   description: 'A blog application created with Next.js',
 };
 
@@ -17,7 +22,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`antialiased`}>{children}</body>
+      <body className={`antialiased`}>
+        <Container>
+          <Header />
+          {children}
+          <footer className='row-start-3 flex gap-[24px] flex-wrap items-center justify-center'>
+            <p>Here is your footer</p>
+          </footer>
+        </Container>
+      </body>
     </html>
   );
 }
