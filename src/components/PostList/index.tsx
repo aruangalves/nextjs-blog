@@ -1,7 +1,7 @@
 import { PostCoverImage } from '../PostCoverImage';
 import { PostHeading } from '../PostHeading';
-import { formatDate, formatRelativeDate } from '@/utils/format-date';
 import { findAllPublishedPostsCached } from '@/lib/post/queries';
+import { PostDate } from '../PostDate';
 
 export async function PostList() {
   const posts = await findAllPublishedPostsCached();
@@ -24,13 +24,10 @@ export async function PostList() {
                   alt: post.title,
                 }}
               />
-              <time
-                dateTime={post.createdAt}
-                className='text-slate-600 text-sm/tight block mb-0.5'
-                title={formatRelativeDate(post.createdAt)}
-              >
-                {formatDate(post.createdAt)}
-              </time>
+              <PostDate
+                date={post.createdAt}
+                className='text-slate-600 text-sm/tight mb-0.5'
+              />
               <PostHeading href={postUrl} as='h3'>
                 {post.title}
               </PostHeading>

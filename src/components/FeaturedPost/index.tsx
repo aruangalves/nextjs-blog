@@ -1,7 +1,7 @@
 import { PostHeading } from '../PostHeading';
 import { PostCoverImage } from '../PostCoverImage';
-import { formatDate, formatRelativeDate } from '@/utils/format-date';
 import { findAllPublishedPostsCached } from '@/lib/post/queries';
+import { PostDate } from '../PostDate';
 
 export async function FeaturedPost() {
   const posts = await findAllPublishedPostsCached();
@@ -28,15 +28,13 @@ export async function FeaturedPost() {
           }}
         />
         <section className='sm:justify-center'>
-          <time
-            dateTime={post.createdAt}
-            className='text-slate-600 text-sm/tight block mb-0.5'
-            title={formatDate(post.createdAt)}
-          >
-            {formatRelativeDate(post.createdAt)}
-          </time>
+          <PostDate
+            date={post.createdAt}
+            className='text-slate-600 text-sm/tight mb-0.5'
+            featured
+          />
           <PostHeading href={postUrl}>{post.title}</PostHeading>
-          <p>{post.excerpt}</p>
+          <p className='pt-4'>{post.excerpt}</p>
         </section>
       </article>
     );

@@ -20,7 +20,7 @@ export function PostHeading({
     h6: 'text-2xl/tight sm:text-2xl',
   };
 
-  const commonClasses = ' mb-4 font-extrabold';
+  const commonClasses = ' font-extrabold';
 
   return (
     <HeadingTag
