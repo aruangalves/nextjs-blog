@@ -1,10 +1,10 @@
 import { PostCoverImage } from '../PostCoverImage';
 import { PostHeading } from '../PostHeading';
 import { formatDate, formatRelativeDate } from '@/utils/format-date';
-import { findAllPublishedPosts } from '@/lib/post/queries';
+import { findAllPublishedPostsCached } from '@/lib/post/queries';
 
 export async function PostList() {
-  const posts = await findAllPublishedPosts();
+  const posts = await findAllPublishedPostsCached();
 
   if (posts.length > 0) {
     return (

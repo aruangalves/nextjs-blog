@@ -1,10 +1,10 @@
 import { PostHeading } from '../PostHeading';
 import { PostCoverImage } from '../PostCoverImage';
 import { formatDate, formatRelativeDate } from '@/utils/format-date';
-import { findAllPublishedPosts } from '@/lib/post/queries';
+import { findAllPublishedPostsCached } from '@/lib/post/queries';
 
 export async function FeaturedPost() {
-  const posts = await findAllPublishedPosts();
+  const posts = await findAllPublishedPostsCached();
   const post = posts.shift();
 
   if (typeof post === 'undefined') {
