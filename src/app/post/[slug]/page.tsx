@@ -1,7 +1,6 @@
 import { findPostBySlugCached } from '@/lib/post/queries';
 import { formatDate, formatRelativeDate } from '@/utils/format-date';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
 
 type PostPageProps = {
   params: Promise<{ slug: string }>;
@@ -10,15 +9,7 @@ type PostPageProps = {
 export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params;
 
-  let post;
-
-  try {
-    post = await findPostBySlugCached(slug);
-  } catch {
-    post = undefined;
-  }
-
-  if (!post) notFound();
+  const post = await findPostBySlugCached(slug);
 
   return (
     <article className='pb-16'>

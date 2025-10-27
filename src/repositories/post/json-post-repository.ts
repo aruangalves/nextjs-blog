@@ -55,7 +55,7 @@ export class JsonPostRepository implements PostRepository {
     const posts = await this.findAll();
     const post = posts.find((post) => post.slug === slug);
 
-    if (!post) throw new Error('Post not found by the specified id');
+    if (!post) throw new Error('Post not found by the specified slug');
 
     return post;
   }
