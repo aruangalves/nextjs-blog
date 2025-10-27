@@ -14,10 +14,8 @@ export default function Home() {
 
   return (
     <main className='flex flex-col gap-[32px] row-start-2 items-center sm:items-start pb-16'>
-      <Suspense fallback={<SpinLoader />}>
+      <Suspense fallback={<SpinLoader className='min-h20 mb-16' />}>
         <FeaturedPost />
-      </Suspense>
-      <Suspense fallback={<SpinLoader />}>
         <PostList />
       </Suspense>
     </main>
