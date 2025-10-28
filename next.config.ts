@@ -2,10 +2,11 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
-  output: 'export',
+  /**SSG GENERATION CONFIG: */
+  /*output: 'export',
   images: {
-    unoptimized: false,
-  },
+    unoptimized: true,
+  },*/
 };
 
 export default nextConfig;
