@@ -1,10 +1,10 @@
 import { PostHeading } from '../PostHeading';
 import { PostCoverImage } from '../PostCoverImage';
-import { findAllPublishedPostsCached } from '@/lib/post/queries';
+import { findAllPublicPostsCached } from '@/lib/post/queries/public';
 import { PostDate } from '../PostDate';
 
 export async function FeaturedPost() {
-  const posts = await findAllPublishedPostsCached();
+  const posts = await findAllPublicPostsCached();
   const post = posts.shift();
 
   if (typeof post === 'undefined') {
