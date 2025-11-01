@@ -1,7 +1,7 @@
 import { PostDate } from '../../PostDate';
 import { findAllPostsAdmin } from '@/lib/post/queries/admin';
-import { Trash2Icon } from 'lucide-react';
 import Link from 'next/link';
+import { DeletePostButtonAdmin } from '../DeletePostButtonAdmin';
 
 export async function PostListAdmin() {
   const posts = await findAllPostsAdmin();
@@ -41,13 +41,7 @@ export async function PostListAdmin() {
               <PostDate date={post.updatedAt} className={cssStyling} />
 
               <div className={`${cssStyling} flex flex-row justify-center`}>
-                <button
-                  className='text-red-700 cursor-pointer transition hover:scale-120 hover:text-red-600'
-                  aria-label={`Delete post: ${post.title}`}
-                  title={`Delete post: ${post.title}`}
-                >
-                  <Trash2Icon />
-                </button>
+                <DeletePostButtonAdmin id={post.id} title={post.title} />
               </div>
             </article>
           );
