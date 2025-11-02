@@ -49,6 +49,8 @@ export async function PostListAdmin() {
       </div>
     );
   } else {
-    <div className='grid grid-cols-1 gap-8'></div>;
+    <div className='grid grid-cols-1 gap-8'>
+      The blog still doesn&apos;t have any posts
+    </div>;
   }
 }

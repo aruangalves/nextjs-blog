@@ -1,11 +1,11 @@
 type ErrorMessageProps = {
-  pageTitle: string;
+  pageTitle?: string;
   contentTitle: string;
   message: React.ReactNode;
 };
 
 export default function ErrorMessage({
-  pageTitle,
+  pageTitle = '',
   contentTitle,
   message,
 }: ErrorMessageProps) {
@@ -22,7 +22,7 @@ export default function ErrorMessage({
 
   return (
     <>
-      <title>{pageTitle}</title>
+      {pageTitle && <title>{pageTitle}</title>}
       <main className='flex flex-col gap-[32px] row-start-2 items-center sm:items-start pb-16 min-h-dvh'>
         {titleNode}
         <section className='pt-4'>{message}</section>

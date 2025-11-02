@@ -2,9 +2,20 @@ import { PostHeading } from '../PostHeading';
 import { PostCoverImage } from '../PostCoverImage';
 import { findAllPublicPostsCached } from '@/lib/post/queries/public';
 import { PostDate } from '../PostDate';
+import ErrorMessage from '../ErrorMessage';
 
 export async function FeaturedPost() {
   const posts = await findAllPublicPostsCached();
+
+  if (posts.length <= 0) {
+    return (
+      <ErrorMessage
+        contentTitle='Empty!'
+        message='There are no blog posts on this page...'
+      />
+    );
+  }
+
   const post = posts.shift();
 
   if (typeof post === 'undefined') {
