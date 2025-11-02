@@ -46,25 +46,6 @@ export async function PostListAdmin() {
             </article>
           );
         })}
-        <div className='fixed z-50 bg-black/50 backdrop-blur-sm inset-0 flex items-center justify-center'>
-          <div className='p-8 bg-slate-100 rounded-2xl max-w-2xl mx-6 flex flex-col gap-12 shadow-lg shadow-slate-800'>
-            <h2 className='text-3xl'>Delete post</h2>
-            <p>
-              You are about to delete <b>POST NAME</b>, are you sure?
-            </p>
-            <div className='flex items-center justify-around gap-4'>
-              <button className='rounded-[0.5rem] border-blue-700 border-2 bg-blue-700 px-12 py-4 min-w-40 text-slate-50 font-bold text-[1.15rem] hover:border-blue-800 hover:bg-blue-800 transition hover:cursor-pointer flex items-center justify-center'>
-                Yes
-              </button>
-              <button
-                className='rounded-[0.5rem] border-slate-800 border-2 px-12 py-4 min-w-40 font-bold text-[1.15rem] hover:bg-slate-200 transition hover:cursor-pointer flex items-center justify-center'
-                autoFocus
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     );
   } else {

@@ -2,7 +2,8 @@
 
 import { deletePostAction } from '@/actions/post/delete-post-action';
 import { Trash2Icon } from 'lucide-react';
-import { useTransition } from 'react';
+import { useState, useTransition } from 'react';
+import { DialogAdmin } from '../DialogAdmin';
 
 type DeletePostButtonAdminProps = {
   id: string;
@@ -14,24 +15,45 @@ export function DeletePostButtonAdmin({
   title,
 }: DeletePostButtonAdminProps) {
   const [isPending, startTransition] = useTransition();
+  const [showDialog, setShowDialog] = useState(false);
 
   function handleClick() {
-    if (!confirm('Do you really want to delete this post?')) return;
+    setShowDialog(true);
+  }
+
+  function handleConfirm() {
     startTransition(async () => {
       const result = await deletePostAction(id);
       alert(`Invoked server action to delete post with id ${result}`);
+      setShowDialog(false);
     });
   }
 
   return (
-    <button
-      className='text-red-700 cursor-pointer transition hover:scale-120 hover:text-red-600 disabled:text-gray-800 disabled:cursor-not-allowed'
-      aria-label={`Delete post: ${title}`}
-      title={`Delete post: ${title}`}
-      onClick={handleClick}
-      disabled={isPending}
-    >
-      <Trash2Icon />
-    </button>
+    <>
+      <button
+        className='text-red-700 cursor-pointer transition hover:scale-120 hover:text-red-600 disabled:text-gray-800 disabled:cursor-not-allowed'
+        aria-label={`Delete post: ${title}`}
+        title={`Delete post: ${title}`}
+        onClick={handleClick}
+        disabled={isPending}
+      >
+        <Trash2Icon />
+      </button>
+      {showDialog && (
+        <DialogAdmin
+          isVisible={showDialog}
+          title='Delete post'
+          content={
+            <p>
+              Do you really want to delete the post: <b>{title}</b>?
+            </p>
+          }
+          onCancel={() => setShowDialog(false)}
+          onConfirm={() => handleConfirm()}
+          disabled={isPending}
+        />
+      )}
+    </>
   );
 }
