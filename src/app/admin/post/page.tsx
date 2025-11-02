@@ -11,10 +11,8 @@ export const metadata: Metadata = {
 
 export default async function AdminPostPage() {
   return (
-    <div>
-      <h1 className='text-4xl'>To do... AdminPostPage</h1>
-      <p>It requires some work...</p>
-      <h2 className='text-2xl'>Testing database function...</h2>
+    <div className='pt-8'>
+      <h1 className='text-4xl'>Posts</h1>
       <section className='py-4'>
         <Suspense fallback={<SpinLoader />}>
           <PostListAdmin />
