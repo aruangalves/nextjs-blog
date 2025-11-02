@@ -24,8 +24,14 @@ export function DeletePostButtonAdmin({
   function handleConfirm() {
     startTransition(async () => {
       const result = await deletePostAction(id);
-      alert(`Invoked server action to delete post with id ${result}`);
+
       setShowDialog(false);
+
+      if (result.error) {
+        alert(`An error has occurred:\n\n ${result.error}`);
+        return;
+      }
+      alert(`Invoked server action to delete post with id ${id}`);
     });
   }
 
