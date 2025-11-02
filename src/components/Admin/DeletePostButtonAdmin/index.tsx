@@ -4,6 +4,7 @@ import { deletePostAction } from '@/actions/post/delete-post-action';
 import { Trash2Icon } from 'lucide-react';
 import { useState, useTransition } from 'react';
 import { DialogAdmin } from '../DialogAdmin';
+import { toast } from 'react-toastify';
 
 type DeletePostButtonAdminProps = {
   id: string;
@@ -22,16 +23,18 @@ export function DeletePostButtonAdmin({
   }
 
   function handleConfirm() {
+    toast.dismiss();
+
     startTransition(async () => {
       const result = await deletePostAction(id);
 
       setShowDialog(false);
 
       if (result.error) {
-        alert(`An error has occurred:\n\n ${result.error}`);
+        toast.error(result.error);
         return;
       }
-      alert(`Invoked server action to delete post with id ${id}`);
+      toast.success('The post ' + title + 'was successfully deleted.');
     });
   }
 
