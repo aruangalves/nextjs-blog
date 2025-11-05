@@ -1,4 +1,5 @@
 import { Button } from '@/components/Button';
+import { InputCheckbox } from '@/components/InputCheckbox';
 import { InputText } from '@/components/InputText';
 
 export const dynamic = 'force-dynamic';
@@ -28,6 +29,7 @@ export default async function AdminPostNewPage() {
         <InputText labelText='Name' placeholder='Type your name' disabled />
         <InputText labelText='Name' value='Type your name' disabled />
         <InputText labelText='Name' value='Type your name' readOnly />
+        <InputCheckbox labelText='Is this checkbox cool?' />
       </div>
     </div>
   );

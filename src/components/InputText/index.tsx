@@ -8,9 +8,9 @@ export function InputText({ labelText = '', ...props }: InputTextProps) {
   const id = useId();
 
   return (
-    <div className='flex flex-col gap-2'>
+    <div className='flex flex-col gap-2 py-2'>
       {labelText && (
-        <label htmlFor={id} className='font-bold'>
+        <label htmlFor={id} className='font-bold text-slate-600'>
           {labelText}
         </label>
       )}
