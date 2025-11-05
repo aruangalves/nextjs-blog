@@ -46,7 +46,12 @@ export function DialogAdmin({
           <Button variant='default' onClick={onConfirm} disabled={disabled}>
             Yes
           </Button>
-          <Button variant='ghost' onClick={handleCancel} disabled={disabled}>
+          <Button
+            autoFocus
+            variant='ghost'
+            onClick={handleCancel}
+            disabled={disabled}
+          >
             Cancel
           </Button>
         </div>
