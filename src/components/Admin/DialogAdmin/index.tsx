@@ -1,5 +1,7 @@
 'use client';
 
+import { Button } from '@/components/Button';
+
 type DialogAdminProps = {
   title: string;
   content: React.ReactNode;
@@ -41,21 +43,12 @@ export function DialogAdmin({
         </h3>
         <div id='dialog-description'>{content}</div>
         <div className='flex items-center justify-around gap-4'>
-          <button
-            className='rounded-[0.5rem] border-blue-700 border-2 bg-blue-700 px-12 py-4 min-w-40 text-slate-50 font-bold text-[1.15rem] hover:border-blue-800 hover:bg-blue-800 transition hover:cursor-pointer flex items-center justify-center disabled:bg-slate-400 disabled:border-slate-400 disabled:cursor-not-allowed'
-            onClick={onConfirm}
-            disabled={disabled}
-          >
+          <Button variant='default' onClick={onConfirm} disabled={disabled}>
             Yes
-          </button>
-          <button
-            className='rounded-[0.5rem] border-slate-800 border-2 px-12 py-4 min-w-40 font-bold text-[1.15rem] hover:bg-slate-200 transition hover:cursor-pointer flex items-center justify-center disabled:cursor-not-allowed disabled:border-slate-400 disabled:text-slate-400'
-            autoFocus
-            onClick={handleCancel}
-            disabled={disabled}
-          >
+          </Button>
+          <Button variant='ghost' onClick={handleCancel} disabled={disabled}>
             Cancel
-          </button>
+          </Button>
         </div>
       </div>
     </div>
