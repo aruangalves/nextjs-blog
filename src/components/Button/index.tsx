@@ -21,7 +21,8 @@ export function Button({
   const commonButtonClasses =
     'rounded-[0.5rem] border-2 px-12 py-4 min-w-40 font-bold text-[1.15rem] transition hover:cursor-pointer flex items-center justify-center disabled:cursor-not-allowed flex items-center justify-center gap-2 [&_svg]:w-6 [&_svg]:h-6';
 
-  const buttonClasses = buttonVariants[variant] + ' ' + commonButtonClasses;
+  const buttonClasses =
+    buttonVariants[variant] + ' ' + commonButtonClasses + ' ' + props.className;
 
   return (
     <button className={buttonClasses} {...props}>
