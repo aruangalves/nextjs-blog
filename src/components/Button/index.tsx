@@ -25,7 +25,7 @@ export function Button({
     buttonVariants[variant] + ' ' + commonButtonClasses + ' ' + props.className;
 
   return (
-    <button className={buttonClasses} {...props}>
+    <button {...props} className={buttonClasses}>
       {children}
     </button>
   );
