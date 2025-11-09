@@ -36,7 +36,7 @@ export async function uploadImageAction(
     return makeResult({
       error: `O tamanho da imagem excede o limite de upload (${
         IMAGE_UPLOAD_MAX_SIZE / 1024
-      }KB), por favor escolha uma imagem menor.`,
+      }KB). Por favor, escolha uma imagem menor.`,
     });
   }
 
