@@ -19,6 +19,8 @@ export function ImageUploader() {
   }
 
   function handleInputFileChange() {
+    toast.dismiss();
+
     if (!fileInputRef.current) return;
 
     const fileInput = fileInputRef.current;
@@ -44,7 +46,15 @@ export function ImageUploader() {
 
     //TODO: Criar a action para upload de arquivo
     startUploadTransition(async () => {
-      const result = await uploadImageAction(/*formData*/);
+      const result = await uploadImageAction(formData);
+
+      if (result.error) {
+        toast.error(result.error);
+        fileInput.value = '';
+        return;
+      }
+
+      toast.success('Imagem carregada com sucesso!');
     });
 
     fileInput.value = '';
