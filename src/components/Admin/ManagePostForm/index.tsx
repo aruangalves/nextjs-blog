@@ -7,9 +7,14 @@ import { MarkdownEditor } from '@/components/MarkdownEditor';
 import { useState } from 'react';
 import { ImageUploader } from '../ImageUploader';
 import { MessageSquarePlusIcon } from 'lucide-react';
+import { PublicPost } from '@/dto/post/dto';
 
-export function ManagePostForm() {
-  const [contentValue, setContentValue] = useState('Este é **um exemplo**.');
+type ManagePostFormProps = {
+  publicPost?: PublicPost;
+};
+
+export function ManagePostForm({ publicPost }: ManagePostFormProps) {
+  const [contentValue, setContentValue] = useState(publicPost?.content || '');
 
   return (
     <form action='' className='mb-16 flex flex-col gap-4'>
@@ -19,7 +24,7 @@ export function ManagePostForm() {
         placeholder='ID gerado automaticamente'
         type='text'
         readOnly
-        defaultValue={''}
+        defaultValue={publicPost?.id || ''}
       />
       <InputText
         labelText='Slug'
@@ -27,28 +32,28 @@ export function ManagePostForm() {
         placeholder='Slug gerado automaticamente'
         type='text'
         readOnly
-        defaultValue={''}
+        defaultValue={publicPost?.slug || ''}
       />
       <InputText
         labelText='Autor'
         name='author'
         placeholder='Digite o nome do autor'
         type='text'
-        defaultValue={''}
+        defaultValue={publicPost?.author || ''}
       />
       <InputText
         labelText='Título'
         name='title'
         placeholder='Digite o título'
         type='text'
-        defaultValue={''}
+        defaultValue={publicPost?.title || ''}
       />
       <InputText
         labelText='Excerto'
         name='excerpt'
         placeholder='Digite o resumo'
         type='text'
-        defaultValue={''}
+        defaultValue={publicPost?.excerpt || ''}
       />
       <MarkdownEditor
         labelText='Conteúdo'
@@ -63,12 +68,13 @@ export function ManagePostForm() {
         name='coverImageUrl'
         placeholder='Digite a URL da imagem de capa'
         type='text'
-        defaultValue={''}
+        defaultValue={publicPost?.coverImageUrl || ''}
       />
       <InputCheckbox
         labelText='Publicar post?'
         name='published'
         type='checkbox'
+        defaultChecked={publicPost?.published || false}
       />
       <Button type='submit'>
         <MessageSquarePlusIcon />
