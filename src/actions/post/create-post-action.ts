@@ -1,10 +1,14 @@
 'use server';
 
+import { drizzleDb } from '@/db/drizzle';
+import { postsTable } from '@/db/drizzle/schemas';
 import { makePartialPublicPost, PublicPost } from '@/dto/post/dto';
 import { PostCreateSchema } from '@/lib/post/validations';
 import { PostModel } from '@/models/post/post-model';
 import { getZodErrorMessages } from '@/utils/get-zod-error-msgs';
 import { makeSlugFromText } from '@/utils/make-slug-from-text';
+import { revalidateTag } from 'next/cache';
+import { redirect } from 'next/navigation';
 import { v4 as uuidV4 } from 'uuid';
 
 type createPostActionState = {
@@ -44,10 +48,17 @@ export async function createPostAction(
     slug: makeSlugFromText(validPostData.title),
   };
 
-  return {
+  //TODO: move this method to the repo
+  await drizzleDb.insert(postsTable).values(newPost);
+
+  revalidateTag('posts');
+  redirect(`/admin/post/${newPost.id}`);
+
+  //unreachable code
+  /*return {
     formState: newPost,
     errors: [],
-  };
+  };*/
 }
 
 //Post model - objFromFormData
