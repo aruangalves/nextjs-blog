@@ -58,28 +58,3 @@ export class JsonPostRepository implements PostRepository {
     return post;
   }
 }
-
-//Printing the content from the JSON file:
-//Method #1
-//postRepository.findAll().then((posts) => console.log(posts));
-//Method #2
-// (async () => {
-//   const posts = await postRepository.findAll();
-//   console.log(posts);
-// })();
-
-//Print every post ID
-// (async () => {
-//   const posts = await postRepository.findAll();
-//   posts.forEach((post) => {
-//     console.log(post.id);
-//   });
-// })();
-
-//Find post with id 'afa086e4-53e4-492d-acf2-7c2966d83fcd':
-// (async () => {
-//   const post = await postRepository.findById(
-//     'afa086e4-53e4-492d-acf2-7c2966d83fcd',
-//   );
-//   console.log(post);
-// })();

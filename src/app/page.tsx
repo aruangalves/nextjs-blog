@@ -10,8 +10,6 @@ import { Suspense } from 'react';
 // app/about/page.tsx --> /about route
 
 export default function Home() {
-  console.log('Message from the Home server component');
-
   return (
     <main className='flex flex-col gap-[32px] row-start-2 items-center sm:items-start pb-16'>
       <Suspense fallback={<SpinLoader className='min-h20 mb-16' />}>
