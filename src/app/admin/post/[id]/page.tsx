@@ -29,7 +29,7 @@ export default async function AdminPostIdPage({
   return (
     <div className='pb-8'>
       <h1 className='text-4xl font-bold pt-4 pb-8'>Editar Post</h1>
-      <ManagePostForm publicPost={publicPost} />
+      <ManagePostForm mode='update' publicPost={publicPost} />
     </div>
   );
 }
