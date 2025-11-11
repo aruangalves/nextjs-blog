@@ -9,6 +9,7 @@ import { ImageUploader } from '../ImageUploader';
 import { MessageSquarePlusIcon } from 'lucide-react';
 import { makePartialPublicPost, PublicPost } from '@/dto/post/dto';
 import { createPostAction } from '@/actions/post/create-post-action';
+import { toast } from 'react-toastify';
 
 type ManagePostFormProps = {
   publicPost?: PublicPost;
@@ -24,12 +25,15 @@ export function ManagePostForm({ publicPost }: ManagePostFormProps) {
     initialState,
   );
 
+  useEffect(() => {
+    if (postState.errors.length > 0) {
+      toast.dismiss();
+      postState.errors.forEach((error) => toast.error(error));
+    }
+  }, [postState.errors]);
+
   const { formState } = postState;
   const [contentValue, setContentValue] = useState(formState.content);
-
-  useEffect(() => {
-    console.log(postState.formState);
-  }, [postState]);
 
   return (
     <form action={formAction} className='mb-16 flex flex-col gap-4'>
