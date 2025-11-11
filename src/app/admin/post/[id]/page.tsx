@@ -1,5 +1,5 @@
 import { ManagePostForm } from '@/components/Admin/ManagePostForm';
-import { makePublicPost } from '@/dto/post/dto';
+import { makePartialPublicPost } from '@/dto/post/dto';
 import { findPostByIdAdmin } from '@/lib/post/queries/admin';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -24,7 +24,7 @@ export default async function AdminPostIdPage({
 
   if (!post) notFound();
 
-  const publicPost = makePublicPost(post);
+  const publicPost = makePartialPublicPost(post);
 
   return (
     <div className='pb-8'>
