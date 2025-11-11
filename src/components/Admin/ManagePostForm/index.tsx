@@ -4,10 +4,11 @@ import { Button } from '@/components/Button';
 import { InputCheckbox } from '@/components/InputCheckbox';
 import { InputText } from '@/components/InputText';
 import { MarkdownEditor } from '@/components/MarkdownEditor';
-import { useState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import { ImageUploader } from '../ImageUploader';
 import { MessageSquarePlusIcon } from 'lucide-react';
 import { PublicPost } from '@/dto/post/dto';
+import { createPostAction } from '@/actions/post/create-post-action';
 
 type ManagePostFormProps = {
   publicPost?: PublicPost;
@@ -15,9 +16,20 @@ type ManagePostFormProps = {
 
 export function ManagePostForm({ publicPost }: ManagePostFormProps) {
   const [contentValue, setContentValue] = useState(publicPost?.content || '');
+  const initialState = {
+    num: 0,
+  };
+  const [formState, formAction, isPending] = useActionState(
+    createPostAction,
+    initialState,
+  );
+
+  useEffect(() => {
+    console.log(formState.num);
+  }, [formState]);
 
   return (
-    <form action='' className='mb-16 flex flex-col gap-4'>
+    <form action={formAction} className='mb-16 flex flex-col gap-4'>
       <InputText
         labelText='ID'
         name='id'
