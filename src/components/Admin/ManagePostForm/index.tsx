@@ -6,7 +6,7 @@ import { InputText } from '@/components/InputText';
 import { MarkdownEditor } from '@/components/MarkdownEditor';
 import { useActionState, useEffect, useState } from 'react';
 import { ImageUploader } from '../ImageUploader';
-import { MessageSquarePlusIcon } from 'lucide-react';
+import { MessageSquareMore, MessageSquarePlusIcon } from 'lucide-react';
 import { makePartialPublicPost, PublicPost } from '@/dto/post/dto';
 import { createPostAction } from '@/actions/post/create-post-action';
 import { toast } from 'react-toastify';
@@ -29,8 +29,18 @@ export function ManagePostForm(props: ManagePostFormProps) {
   const { mode } = props;
 
   let publicPost;
+  let buttonText = (
+    <>
+      <MessageSquarePlusIcon /> Criar post
+    </>
+  );
   if (mode === 'update') {
     publicPost = props.publicPost;
+    buttonText = (
+      <>
+        <MessageSquareMore /> Editar post
+      </>
+    );
   }
 
   const actionsMap = {
@@ -131,8 +141,7 @@ export function ManagePostForm(props: ManagePostFormProps) {
         disabled={isPending}
       />
       <Button type='submit' disabled={isPending}>
-        <MessageSquarePlusIcon />
-        Criar post
+        {buttonText}
       </Button>
     </form>
   );
