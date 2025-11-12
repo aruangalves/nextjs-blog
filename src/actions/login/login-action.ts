@@ -13,6 +13,13 @@ export async function loginAction(
   loginState: LoginActionState,
   formData: FormData,
 ): Promise<LoginActionState> {
+  const allowLogin = Boolean(Number(process.env.ALLOW_LOGIN));
+  if (!allowLogin) {
+    return {
+      username: '',
+      error: 'Login is not allowed',
+    };
+  }
   //this response delay is deliberate to mitigate bruteforce attacks
   await asyncDelay(2000);
 
