@@ -17,3 +17,9 @@ npm run build
 #OPTIONAL: run test
 npm start
 ```
+
+Deploy requirements:
+
+- Linux server with valid, static IP
+- SSH access
+- A domain where you can set your DNS registry (type A register is fine)
