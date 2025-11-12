@@ -1,5 +1,6 @@
 'use server';
 
+import { verifyLoginSession } from '@/lib/login/manage-login';
 import { mkdir, writeFile } from 'fs/promises';
 import { extname, resolve } from 'path';
 
@@ -11,11 +12,16 @@ type UploadImageActionResult = {
 export async function uploadImageAction(
   formData: FormData,
 ): Promise<UploadImageActionResult> {
-  //TODO: check user login before proceeding
+  const isAuthenticated = await verifyLoginSession();
+
   const makeResult = ({ url = '', error = '' }) => {
     return { url, error };
   };
   const genericError = 'Dados inválidos';
+
+  if (!isAuthenticated) {
+    return makeResult({ error: 'Faça login antes de continuar.' });
+  }
 
   if (!(formData instanceof FormData)) {
     return makeResult({ error: genericError });

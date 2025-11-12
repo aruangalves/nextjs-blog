@@ -1,10 +1,17 @@
 'use server';
 
+import { verifyLoginSession } from '@/lib/login/manage-login';
 import { postRepository } from '@/repositories/post';
 import { revalidateTag } from 'next/cache';
 
 export async function deletePostAction(id: string) {
-  //TODO: check user login credentials before proceeding
+  const isAuthenticated = await verifyLoginSession();
+
+  if (!isAuthenticated) {
+    return {
+      error: 'Faça login antes de continuar.',
+    };
+  }
 
   if (!id || typeof id !== 'string') {
     return {
@@ -17,9 +24,9 @@ export async function deletePostAction(id: string) {
     post = await postRepository.delete(id);
   } catch (e: unknown) {
     if (e instanceof Error) {
-      return e;
+      return { error: e.toString() };
     }
-    return 'Erro desconhecido';
+    return { error: 'Erro desconhecido' };
   }
 
   revalidateTag('posts');

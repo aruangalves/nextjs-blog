@@ -34,7 +34,7 @@ export function DeletePostButtonAdmin({
         toast.error(result.error);
         return;
       }
-      toast.success('The post ' + title + 'was successfully deleted.');
+      toast.success('The post ' + title + ' was successfully deleted.');
     });
   }
 
