@@ -14,10 +14,25 @@ export async function loginAction(
   //this response delay is deliberate to mitigate bruteforce attacks
   await asyncDelay(2000);
 
-  const username = String(formData.get('username') || '');
+  const errorMsg = 'Dados inválidos, por favor tente novamente.';
+
+  if (!(formData instanceof FormData)) {
+    return {
+      username: '',
+      error: errorMsg,
+    };
+  }
+
+  const username = formData.get('username')?.toString() || '';
+  const password = formData.get('password')?.toString() || '';
+
+  const isUsernameValid = username === process.env.LOGIN_USER;
+
+  if (isUsernameValid) {
+  }
 
   return {
     username: username,
-    error: 'Login is not functional yet, try again later ;^D',
+    error: errorMsg,
   };
 }
