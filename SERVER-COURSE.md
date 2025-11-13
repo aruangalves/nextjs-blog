@@ -174,6 +174,12 @@ permissão pastas da raiz até a pasta uploads, assim (mas teste primeiro para
 saber se precisa). O mais simples mesmo é mudar o usuário do Nginx de www-data
 para seu nome de usuário:
 
+Change user on /etc/nginx/nginx.conf to your user Then restart the service
+
+```sh
+# systemctl reload nginx
+```
+
 ```sh
 sudo chmod o+x /home # primeiro na home (até chegar em uploads)
 sudo chmod o+x /home/luizotavio
