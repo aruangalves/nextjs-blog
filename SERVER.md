@@ -23,3 +23,13 @@ Deploy requirements:
 - Linux server with valid, static IP
 - SSH access
 - A domain where you can set your DNS registry (type A register is fine)
+
+If you accidentally change server files and need to restore from latest commit:
+
+```sh
+git status
+git pull origin YOUR_BRANCH
+#YOUR_BRANCH = main, master, etc
+git add .
+git reset --hard
+```
