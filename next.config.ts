@@ -23,6 +23,16 @@ const nextConfig: NextConfig = {
         pathname: '/**',
         search: '',
       },
+      //THIS IS NEEDED FOR IMAGES STORED ON _next/ FOLDER
+      /*
+      {
+        protocol: 'https',
+        hostname: 'YOUR-DOMAIN-NAME.COM.BR',
+        port: '',
+        pathname: '/**',
+        search: '',
+      },
+      */
     ],
   },
 };
